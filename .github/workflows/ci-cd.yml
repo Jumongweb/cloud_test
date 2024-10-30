@@ -1,0 +1,47 @@
+name: CI/CD for cloud test
+
+# Trigger the workflow on pushes to the main branch
+on:
+  push:
+    branches:
+      - dev
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven
+
+      - name: Build with Maven
+        run: mvn clean install
+
+      - name: Run tests
+        run: mvn test
+
+#  deploy:
+#    # Run deployment job only if the build job succeeds
+#    needs: build
+#    runs-on: ubuntu-latest
+#    if: github.ref == 'refs/heads/main' # Deploy only from the main branch
+#
+#    steps:
+#      - name: Deploy to server
+#        run: |
+#          # Add deployment steps here (e.g., deploy to AWS, Heroku, etc.)
+#          echo "Deployment placeholder"  # Replace this with actual deployment commands
