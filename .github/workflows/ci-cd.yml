@@ -46,6 +46,7 @@ jobs:
         run: docker push jumongweb/cloud_test:latest
 
 
+
 #      - name: Run tests
 #        run: mvn test
 
