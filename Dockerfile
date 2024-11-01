@@ -6,4 +6,4 @@ FROM openjdk:17
 COPY --from=build target/*.jar cloud_test.jar
 EXPOSE 5050
 
-ENTRYPOINT ["java", "-jar", "-Dserver.port=5050", "cloud_one.jar"]
+ENTRYPOINT ["java", "-jar", "-Dserver.port=5050", "cloud_test.jar"]
