@@ -45,6 +45,62 @@ jobs:
       - name: Push Docker Image to Docker Hub
         run: docker push jumongweb/cloud_test:latest
 
+      - name: Deploy to AWS EC2
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          INSTANCE_IP: ${{ secrets.PUBLIC_IPV4 }}
+        run: |
+          echo "$PRIVATE_KEY" > aws_key.pem
+          chmod 600 aws_key.pem
+          mkdir -p ~/.ssh
+          ssh-keyscan -H $INSTANCE_IP >> ~/.ssh/known_hosts
+          ssh -i aws_key.pem ubuntu@$INSTANCE_IP << 'EOF'
+
+          # Install Docker if not already installed
+          if ! command -v docker &> /dev/null; then
+            sudo apt update
+            sudo apt install -y docker.io
+            sudo systemctl start docker
+            sudo systemctl enable docker
+          fi
+
+          # Create Docker network if it doesn't exist
+          if ! docker network ls | grep -q cloud_network; then
+            sudo docker network create cloud_network
+          fi
+
+          # Stop and remove any existing PostgreSQL container
+          if [ "$(docker ps -aq -f name=cloud_db_postgres)" ]; then
+            sudo docker stop cloud_db_postgres
+            sudo docker rm cloud_db_postgres
+          fi
+
+          # Pull and run PostgreSQL container without port binding
+          sudo docker run -d --name cloud_db_postgres \
+            --network cloud_network \
+            -e POSTGRES_DB=cloud_db \
+            -e POSTGRES_USER=dev_user \
+            -e POSTGRES_PASSWORD=jumong \
+            postgres:latest
+
+          # Stop and remove any existing application container
+          if [ "$(docker ps -aq -f name=cloud_test)" ]; then
+            sudo docker stop cloud_test
+            sudo docker rm cloud_test
+          fi
+
+          # Pull the latest application image
+          sudo docker pull jumongweb/cloud_test:latest
+
+          # Run the application container, connecting to the PostgreSQL container
+          sudo docker run -d -p 3030:3030 --name cloud_test \
+            --network cloud_network \
+            -e SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/cloud_test \
+            -e SPRING_DATASOURCE_USERNAME=postgres \
+            -e SPRING_DATASOURCE_PASSWORD=cloud_test@8080 \
+            jumongweb/cloud_test:latest
+          EOF
+
 
 
 #      - name: Run tests
