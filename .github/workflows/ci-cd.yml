@@ -50,8 +50,8 @@ jobs:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           INSTANCE_IP: ${{ secrets.PUBLIC_IPV4 }}
         run: |
-          echo "$PRIVATE_KEY" > aws_key.pem
-          chmod 600 aws_key.pem
+          echo "$PRIVATE_KEY" > cloud_one_key.pem
+          chmod 600 cloud_one_key.pem
           mkdir -p ~/.ssh
           ssh-keyscan -H $INSTANCE_IP >> ~/.ssh/known_hosts
           ssh -i aws_key.pem ubuntu@$INSTANCE_IP << 'EOF'
