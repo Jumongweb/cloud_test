@@ -61,6 +61,8 @@ jobs:
             sudo systemctl start docker
             sudo systemctl enable docker
           fi
+          
+          // To be removed
 
           # Create Docker network if it doesn't exist
           if ! docker network ls | grep -q cloud_network; then
