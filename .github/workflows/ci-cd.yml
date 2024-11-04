@@ -1,11 +1,9 @@
 name: CI/CD for cloud test
 
-# Trigger the workflow on pushes to the main branch
 on:
   push:
     branches:
       - dev
-
 
 jobs:
   build:
@@ -93,27 +91,10 @@ jobs:
           sudo docker pull jumongweb/cloud_test:latest
 
           # Run the application container, connecting to the PostgreSQL container
-          sudo docker run -d -p 3030:3030 --name cloud_test \
+          sudo docker run -d -p 5050:5050 --name cloud_test \
             --network cloud_network \
-            -e SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/cloud_test \
-            -e SPRING_DATASOURCE_USERNAME=postgres \
-            -e SPRING_DATASOURCE_PASSWORD=cloud_test@8080 \
+            -e SPRING_DATASOURCE_URL=jdbc:postgresql://cloud_db_postgres:5432/cloud_db \
+            -e SPRING_DATASOURCE_USERNAME=dev_user \
+            -e SPRING_DATASOURCE_PASSWORD=jumong \
             jumongweb/cloud_test:latest
           EOF
-
-
-
-#      - name: Run tests
-#        run: mvn test
-
-#  deploy:
-#    # Run deployment job only if the build job succeeds
-#    needs: build
-#    runs-on: ubuntu-latest
-#    if: github.ref == 'refs/heads/main' # Deploy only from the main branch
-#
-#    steps:
-#      - name: Deploy to server
-#        run: |
-#          # Add deployment steps here (e.g., deploy to AWS, Heroku, etc.)
-#          echo "Deployment placeholder"  # Replace this with actual deployment commands
