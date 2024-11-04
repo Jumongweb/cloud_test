@@ -54,7 +54,7 @@ jobs:
           chmod 600 cloud_one_key.pem
           mkdir -p ~/.ssh
           ssh-keyscan -H $INSTANCE_IP >> ~/.ssh/known_hosts
-          ssh -i aws_key.pem ubuntu@$INSTANCE_IP << 'EOF'
+          ssh -i cloud_one_key.pem ubuntu@$INSTANCE_IP << 'EOF'
 
           # Install Docker if not already installed
           if ! command -v docker &> /dev/null; then
