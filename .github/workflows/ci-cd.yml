@@ -94,7 +94,7 @@ jobs:
           # Run the application container, connecting to the PostgreSQL container
           sudo docker run -d -p 5050:5050 --name cloud_test \
             --network cloud_network \
-            --memory 128m --cpus "0.5" \
+            --memory 250m --cpus "0.5" \
             -e SPRING_DATASOURCE_URL=jdbc:postgresql://cloud_db_postgres:5432/cloud_db \
             -e SPRING_DATASOURCE_USERNAME=dev_user \
             -e SPRING_DATASOURCE_PASSWORD=jumong \
