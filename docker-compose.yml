@@ -8,6 +8,7 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
 #    environment:
 #      POSTGRES_USER: postgres
 #      POSTGRES_PASSWORD: cloud_test@8080
@@ -58,10 +59,10 @@ services:
     ports:
       - "9091:9090"
 
-  node_exporter:
-    image: prom/node-exporter
-    ports:
-      - "9100:9100"
+#  node_exporter:
+#    image: prom/node-exporter
+#    ports:
+#      - "9100:9100"
 
   grafana:
     image: grafana/grafana
@@ -72,9 +73,9 @@ services:
     depends_on:
       - prometheus
 
-#networks:
-#  app-network:
-#    driver: bridge
+networks:
+  app-network:
+    driver: bridge
 
 
 volumes:

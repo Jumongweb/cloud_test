@@ -1,47 +1,5 @@
-2024-11-05T11:30:16.119+01:00  INFO 19100 --- [main] c.j.cloud_test.CloudTestApplication      : Starting CloudTestApplication using Java 21.0.1 with PID 19100 (C:\Users\DELL\Documents\SEMICOLON\cloned\cloud_test\target\classes started by Jumong in C:\Users\DELL\Documents\SEMICOLON\cloned\cloud_test)
-2024-11-05T11:30:16.217+01:00  INFO 19100 --- [main] c.j.cloud_test.CloudTestApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-11-05T11:30:23.055+01:00  INFO 19100 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-11-05T11:30:23.855+01:00  INFO 19100 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 729 ms. Found 1 JPA repository interface.
-2024-11-05T11:30:27.764+01:00  INFO 19100 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 5050 (http)
-2024-11-05T11:30:27.834+01:00  INFO 19100 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-11-05T11:30:27.837+01:00  INFO 19100 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
-2024-11-05T11:30:28.274+01:00  INFO 19100 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-11-05T11:30:28.276+01:00  INFO 19100 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 11516 ms
-2024-11-05T11:30:29.935+01:00 DEBUG 19100 --- [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
-2024-11-05T11:30:31.518+01:00  INFO 19100 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-11-05T11:30:32.270+01:00  INFO 19100 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-11-05T11:30:32.792+01:00  INFO 19100 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-11-05T11:30:34.944+01:00  INFO 19100 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-11-05T11:30:35.136+01:00  INFO 19100 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-11-05T11:30:37.944+01:00  INFO 19100 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@35d88a54
-2024-11-05T11:30:37.949+01:00  INFO 19100 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-11-05T11:30:38.247+01:00  WARN 19100 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-11-05T11:30:44.953+01:00  INFO 19100 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-11-05T11:30:46.487+01:00  INFO 19100 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-11-05T11:30:50.238+01:00  WARN 19100 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-11-05T11:30:51.281+01:00 DEBUG 19100 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
-2024-11-05T11:30:52.244+01:00 DEBUG 19100 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2024-11-05T11:30:52.454+01:00 DEBUG 19100 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2024-11-05T11:30:52.613+01:00 DEBUG 19100 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2024-11-05T11:30:54.630+01:00  INFO 19100 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2024-11-05T11:30:54.956+01:00  WARN 19100 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
-2024-11-05T11:30:54.963+01:00  INFO 19100 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-11-05T11:30:54.970+01:00  INFO 19100 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-11-05T11:30:56.443+01:00  INFO 19100 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-11-05T11:30:56.503+01:00  INFO 19100 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-11-05T11:30:56.623+01:00 ERROR 19100 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Web server failed to start. Port 5050 was already in use.
-
-Action:
-
-Identify and stop the process that's listening on port 5050 or configure this application to listen on another port.
-
+2024-11-08T05:34:34.577+01:00  WARN 7080 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5h24m52s464ms305µs).
+2024-11-08T05:35:24.835+01:00  WARN 7080 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=55s447ms177µs400ns).
+2024-11-08T06:25:26.961+01:00  WARN 7080 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=37m30s942ms297µs300ns).
+2024-11-08T07:28:10.112+01:00  WARN 7080 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=38m57s712ms222µs500ns).
+2024-11-08T07:28:41.647+01:00  WARN 7080 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=45s213ms934µs700ns).
